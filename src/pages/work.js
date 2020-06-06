@@ -14,7 +14,7 @@ const Work = ({ projects, meta }) => (
     <>
         <Helmet
             title={`Work | Alec Diaz`}
-            titleTemplate={`%s | Work |Alec Diaz`}
+            titleTemplate={`%s`}
             meta={[
                 {
                     name: `description`,
@@ -22,7 +22,7 @@ const Work = ({ projects, meta }) => (
                 },
                 {
                     property: `og:title`,
-                    content: `Work | Alec Diaz`,
+                    content: ``,
                 },
                 {
                     property: `og:description`,
