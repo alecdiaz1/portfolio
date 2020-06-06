@@ -117,6 +117,9 @@ const ProjectCardAction = styled("div")`
 
 const ProjectCardImageContainer = styled("div")`
     background: ${colors.grey200};
+    background: url(${props => props.thumbnailUrl}) no-repeat 50% 50%;
+    background-size: cover;
+    
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -124,7 +127,7 @@ const ProjectCardImageContainer = styled("div")`
     position: relative;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
-        max-height: 250px;
+        height: 200px;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -141,11 +144,6 @@ const ProjectCardImageContainer = styled("div")`
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
-    }
-
-    img {
-        width: 100%;
-        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
     }
 `
 
@@ -187,9 +185,9 @@ const ProjectCard = ({ category, title, description, thumbnail, uid, tags }) => 
         Details <span>&#8594;</span>
       </ProjectCardAction>
     </ProjectCardContent>
-    <ProjectCardImageContainer className="ProjectCardImageContainer">
-      <img src={thumbnail.url} alt={title[0].text}/>
-    </ProjectCardImageContainer>
+    <ProjectCardImageContainer
+      thumbnailUrl={thumbnail.url}
+      className="ProjectCardImageContainer"/>
   </ProjectCardContainer>
 )
 
