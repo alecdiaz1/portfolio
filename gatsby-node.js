@@ -24,6 +24,9 @@ exports.createPages = async ({ graphql, actions }) => {
                             project_preview_thumbnail
                             project_category
                             project_post_date
+                            project_tags {
+                                project_tag
+                            }
                             _meta {
                                 uid
                             }

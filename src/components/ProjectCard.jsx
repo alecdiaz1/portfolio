@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "gatsby";
-import { RichText } from "prismic-reactjs";
-import styled from "@emotion/styled";
-import dimensions from "styles/dimensions";
-import colors from "styles/colors";
-import PropTypes from "prop-types";
+import React from "react"
+import { Link } from "gatsby"
+import { RichText } from "prismic-reactjs"
+import styled from "@emotion/styled"
+import dimensions from "styles/dimensions"
+import colors from "styles/colors"
+import PropTypes from "prop-types"
 
 const ProjectCardContainer = styled(Link)`
     display: grid;
@@ -94,7 +94,6 @@ const ProjectCardTitle = styled("h3")`
 const ProjectCardBlurb = styled("div")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    margin-bottom: 5em;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 2.5em;
@@ -157,34 +156,58 @@ const ProjectCardImageContainer = styled("div")`
     }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid}) => (
-    <ProjectCardContainer to={`/work/${uid}`}>
-        <ProjectCardContent className="ProjectCardContent">
-            <ProjectCardCategory>
-                {category[0].text}
-            </ProjectCardCategory>
-            <ProjectCardTitle>
-                {title[0].text}
-            </ProjectCardTitle>
-            <ProjectCardBlurb>
-                {RichText.render(description)}
-            </ProjectCardBlurb>
-            <ProjectCardAction className="ProjectCardAction">
-                Details <span>&#8594;</span>
-            </ProjectCardAction>
-        </ProjectCardContent>
-        <ProjectCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} alt={title[0].text}/>
-        </ProjectCardImageContainer>
-    </ProjectCardContainer>
+
+
+const ProjectCardTagContainer = styled("div")`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    
+    div {
+      color: ${colors.grey700};
+    }
+
+    @media(max-width:${dimensions.maxwidthTablet}px) {
+        margin-bottom: 2.5em;
+    }
+`
+
+const ProjectCard = ({ category, title, description, thumbnail, uid, tags }) => (
+  <ProjectCardContainer to={`/work/${uid}`}>
+    <ProjectCardContent className="ProjectCardContent">
+      <ProjectCardCategory>
+        {category[0].text}
+      </ProjectCardCategory>
+      <ProjectCardTitle>
+        {title[0].text}
+      </ProjectCardTitle>
+      <ProjectCardBlurb>
+        {RichText.render(description)}
+      </ProjectCardBlurb>
+      <ProjectCardTagContainer>
+        {tags.map(tag => (
+            <div>{tag.project_tag[0].text}</div>
+        ))}
+      </ProjectCardTagContainer>
+      <ProjectCardAction className="ProjectCardAction">
+        Details <span>&#8594;</span>
+      </ProjectCardAction>
+    </ProjectCardContent>
+    <ProjectCardImageContainer className="ProjectCardImageContainer">
+      {/*<img src={thumbnail.url} alt={title[0].text}/>*/}
+    </ProjectCardImageContainer>
+  </ProjectCardContainer>
 )
 
-export default ProjectCard;
+export default ProjectCard
 
 ProjectCard.propTypes = {
-    category: PropTypes.array.isRequired,
-    thumbnail: PropTypes.object.isRequired,
-    title: PropTypes.array.isRequired,
-    description: PropTypes.array.isRequired,
-    uid: PropTypes.string.isRequired
+  category: PropTypes.array.isRequired,
+  thumbnail: PropTypes.object.isRequired,
+  title: PropTypes.array.isRequired,
+  description: PropTypes.array.isRequired,
+  uid: PropTypes.string.isRequired,
 }
