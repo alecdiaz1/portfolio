@@ -199,7 +199,7 @@ export const query = graphql`
                         hero_title
                         hero_button_text
                         hero_button_link {
-                            ... on PRISMIC__ExternalLink {
+                            ... on PRISMIC__FileLink {
                                 _linkType
                                 url
                             }
