@@ -104,6 +104,7 @@ const ProjectCardAction = styled("div")`
     font-weight: 600;
     text-decoration: none;
     color: currentColor;
+    margin-top: 1.5em;
     transition: all 150ms ease-in-out;
 
     span {
@@ -155,8 +156,6 @@ const ProjectCardImageContainer = styled("div")`
         }
     }
 `
-
-
 
 const ProjectCardTagContainer = styled("div")`
     width: 100%;
