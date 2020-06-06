@@ -62,6 +62,7 @@ const Work = ({ projects, meta }) => (
                         title={project.node.project_title}
                         description={project.node.project_preview_description}
                         thumbnail={project.node.project_preview_thumbnail}
+                        tags={project.node.project_tags}
                         uid={project.node._meta.uid}
                     />
                 ))}
@@ -95,6 +96,9 @@ export const query = graphql`
                         project_preview_thumbnail
                         project_category
                         project_post_date
+                        project_tags {
+                            project_tag
+                        }
                         _meta {
                             uid
                         }
