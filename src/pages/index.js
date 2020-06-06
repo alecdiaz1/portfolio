@@ -35,7 +35,7 @@ const Hero = styled("div")`
             &:nth-of-type(5) { color: ${colors.teal500}; }
 
             &:hover {
-                cursor: pointer;
+                cursor: default;
                 transition: all 100ms ease-in-out;
 
                 &:nth-of-type(1) { color: ${colors.blue600};    background-color: ${colors.blue200};}
